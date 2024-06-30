@@ -1,6 +1,9 @@
 import 'package:authentication_flutter/auth/auth.dart';
 import 'package:authentication_flutter/auth/login_register.dart';
 import 'package:authentication_flutter/firebase_options.dart';
+import 'package:authentication_flutter/pages/drawer_pages/profile.dart';
+import 'package:authentication_flutter/pages/drawer_pages/user.dart';
+import 'package:authentication_flutter/pages/home_page.dart';
 import 'package:authentication_flutter/theme/dark_mode.dart';
 import 'package:authentication_flutter/theme/light_mode.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,6 +25,13 @@ class MyApp extends StatelessWidget {
       home: AuthPage(),
       theme: lightMode,
       darkTheme: darkMode,
+      routes: {
+        '/login_register': (context) => LoginRegister(),
+        '/home_page': (context) => Homepage(),
+        '/profile': (context) => ProfilePage(),
+        '/user': (context)=> UserPage(),
+       
+      },
     );
   }
 }

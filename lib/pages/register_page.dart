@@ -40,6 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
         UserCredential? userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: emailController.text, password: passwordController.text);
+        createUserDocument(userCredential);
         Navigator.pop(context);
         displaymessagetouser("Account created successfully", context);
       } on FirebaseAuthException catch (e) {
@@ -47,7 +48,9 @@ class _RegisterPageState extends State<RegisterPage> {
       }
     }
   }
-
+  Future<void> createUserDocument(UserCredential userCredential) async {
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
