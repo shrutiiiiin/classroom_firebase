@@ -1,6 +1,7 @@
 import 'package:authentication_flutter/components/button.dart';
 import 'package:authentication_flutter/components/textfield.dart';
 import 'package:authentication_flutter/helper/helper_function.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -41,16 +42,33 @@ class _RegisterPageState extends State<RegisterPage> {
             .createUserWithEmailAndPassword(
                 email: emailController.text, password: passwordController.text);
         createUserDocument(userCredential);
-        Navigator.pop(context);
+        if (context.mounted) Navigator.pop(context);
         displaymessagetouser("Account created successfully", context);
       } on FirebaseAuthException catch (e) {
         displaymessagetouser(e.message.toString(), context);
       }
     }
   }
+
   Future<void> createUserDocument(UserCredential userCredential) async {
-    
+    if (userCredential.user != null && userCredential != null) {
+      try {
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(userCredential.user!.email)
+            .set({
+          'email': userCredential.user!.email,
+          'username': usernameController.text
+        });
+      } catch (e) {
+        // Handle Firestore error
+        print("Failed to create user document: $e");
+      }
+    } else {
+      print("UserCredential or User is null");
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
