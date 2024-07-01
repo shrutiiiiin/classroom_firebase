@@ -21,7 +21,6 @@ class _AuthPageState extends State<AuthPage> {
           if (snapshot.hasData) {
             return Homepage();
           }
-
           //if user is not signed in
           else {
             return LoginRegister();

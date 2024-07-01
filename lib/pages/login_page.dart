@@ -2,7 +2,6 @@ import 'package:authentication_flutter/components/button.dart';
 import 'package:authentication_flutter/components/textfield.dart';
 import 'package:authentication_flutter/helper/helper_function.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {

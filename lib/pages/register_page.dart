@@ -21,6 +21,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final TextEditingController confirmpasswordController =
       TextEditingController();
+  String? userType;
+  String? studentClass;
 
   Future<void> register() async {
     //added a circularprogress indicator
@@ -58,7 +60,9 @@ class _RegisterPageState extends State<RegisterPage> {
             .doc(userCredential.user!.email)
             .set({
           'email': userCredential.user!.email,
-          'username': usernameController.text
+          'username': usernameController.text,
+          'usertype': userType,
+          'class': userType == 'Student' ? studentClass : null,
         });
       } catch (e) {
         // Handle Firestore error
@@ -117,6 +121,52 @@ class _RegisterPageState extends State<RegisterPage> {
                   obscureText: true,
                   controller: confirmpasswordController),
               SizedBox(height: 10),
+              DropdownButton<String>(
+                value: userType,
+                hint: Text("Select User Type"),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    userType = newValue!;
+                    studentClass =
+                        null; // Reset class selection when user type changes
+                  });
+                },
+                items: <String>['Student', 'Teacher']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              if (userType == 'Student') ...[
+                DropdownButton<String>(
+                  value: studentClass,
+                  hint: Text("Select Class"),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      studentClass = newValue!;
+                    });
+                  },
+                  items: <String>[
+                    'Class 1',
+                    'Class 2',
+                    'Class 3',
+                    'Class 4',
+                    'Class 5',
+                    'Class 6',
+                    'Class 7',
+                    'Class 8',
+                    'Class 9',
+                    'Class 10'
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ],
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
