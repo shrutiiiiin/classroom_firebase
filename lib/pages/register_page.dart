@@ -1,6 +1,8 @@
 import 'package:authentication_flutter/components/button.dart';
 import 'package:authentication_flutter/components/textfield.dart';
 import 'package:authentication_flutter/helper/helper_function.dart';
+import 'package:authentication_flutter/pages/Student%20Class/classpage.dart';
+import 'package:authentication_flutter/pages/teacher_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +66,22 @@ class _RegisterPageState extends State<RegisterPage> {
           'usertype': userType,
           'class': userType == 'Student' ? studentClass : null,
         });
+        // if (userType == 'Student' && studentClass != null) {
+        //   // Navigate to ClassPage with the selected studentClass
+        //   Navigator.pushReplacement(
+        //     context,
+        //     MaterialPageRoute(
+        //         builder: (context) => ClassPage(studentClass: studentClass)),
+        //   );
+        // } else if (userType == 'Teacher') {
+        //   // Navigate to TeacherPage for teachers
+        //   Navigator.pushReplacement(
+        //     context,
+        //     MaterialPageRoute(builder: (context) => TeacherPage()),
+        //   );
+        // } else {
+        //   print("neither student nor teacher");
+        // }
       } catch (e) {
         // Handle Firestore error
         print("Failed to create user document: $e");
