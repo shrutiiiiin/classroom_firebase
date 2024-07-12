@@ -1,4 +1,5 @@
 import 'package:authentication_flutter/components/my_backbutton.dart';
+import 'package:authentication_flutter/components/my_listTile.dart';
 import 'package:authentication_flutter/helper/helper_function.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,8 +25,8 @@ class UserPage extends StatelessWidget {
             return Text("No data");
           }
           final users = snapshot.data!.docs;
-           //List<DocumentSnapshot> users = snapshot.data!.docs;
-         
+          //List<DocumentSnapshot> users = snapshot.data!.docs;
+
           return Column(
             children: [
               Padding(
@@ -45,10 +46,8 @@ class UserPage extends StatelessWidget {
                   padding: EdgeInsets.all(12),
                   itemBuilder: (context, index) {
                     final user = users[index];
-                    return ListTile(
-                      title: Text(user['username']),
-                      subtitle: Text(user['email']),
-                    );
+                    return MyListtile(
+                        subtitle: user['email'], title: user['username']);
                   },
                 ),
               ),

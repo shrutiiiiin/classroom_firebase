@@ -1,4 +1,5 @@
 import 'package:authentication_flutter/components/my_drawer.dart';
+import 'package:authentication_flutter/components/my_listTile.dart';
 import 'package:authentication_flutter/components/my_postbutton.dart';
 import 'package:authentication_flutter/components/textfield.dart';
 import 'package:authentication_flutter/database/firestore.dart';
@@ -96,10 +97,8 @@ class Homepage extends StatelessWidget {
                       String message = post['message'];
                       String userEmail = post['user'];
                       Timestamp timestamp = post['timestamp'];
-                      return ListTile(
-                        title: Text(post['message']),
-                        subtitle: Text(post['user']),
-                      );
+                      return MyListtile(
+                          subtitle: post['user'], title: post['message']);
                     },
                   ),
                 );
