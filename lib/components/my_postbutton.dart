@@ -15,7 +15,7 @@ class MyPostButton extends StatelessWidget {
           ),
           padding: EdgeInsets.all(16),
           margin: EdgeInsets.only(left: 10),
-          child: Icon(Icons.done),
+          child: Icon(Icons.add),
         ));
   }
 }

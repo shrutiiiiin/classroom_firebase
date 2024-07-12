@@ -24,6 +24,8 @@ class UserPage extends StatelessWidget {
             return Text("No data");
           }
           final users = snapshot.data!.docs;
+           //List<DocumentSnapshot> users = snapshot.data!.docs;
+         
           return Column(
             children: [
               Padding(

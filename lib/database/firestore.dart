@@ -7,7 +7,7 @@ class FirestoreDatabase {
 
   // Get the user's document from Firestore
   final CollectionReference posts =
-      FirebaseFirestore.instance.collection('Posts');
+      FirebaseFirestore.instance.collection('posts');
 
   Future<DocumentReference<Map<String, dynamic>>> addPost(
       String message) async {
@@ -30,7 +30,7 @@ class FirestoreDatabase {
 
   Stream<QuerySnapshot> getPostsStream() {
     final postStream = FirebaseFirestore.instance
-        .collection('Posts')
+        .collection('posts')
         .orderBy('timestamp', descending: true)
         .snapshots();
     return postStream;

@@ -1,6 +1,8 @@
 import 'package:authentication_flutter/components/button.dart';
 import 'package:authentication_flutter/components/textfield.dart';
 import 'package:authentication_flutter/helper/helper_function.dart';
+import 'package:authentication_flutter/pages/Student%20Class/classpage.dart';
+import 'package:authentication_flutter/pages/home_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +35,16 @@ class _LoginPageState extends State<LoginPage> {
           email: emailController.text, password: passwordController.text);
       if (context.mounted) Navigator.pop(context);
       displaymessagetouser("Login Successful", context);
+      if (userType == 'Student') {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ClassPage()));
+      } else if (userType == 'Teacher') {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Homepage()));
+      }
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
-      
+
       displaymessagetouser(e.message.toString(), context);
     }
     //try sign in
