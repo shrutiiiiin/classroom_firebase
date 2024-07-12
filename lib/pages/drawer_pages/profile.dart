@@ -1,3 +1,4 @@
+import 'package:authentication_flutter/components/my_backbutton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,23 +38,40 @@ class ProfilePage extends StatelessWidget {
 
             return Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12, top: 50),
+                    child: Row(
+                      children: [
+                        MyBackbutton(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.inversePrimary,
+                      color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Icon(
                       Icons.person,
-                      size: 80,
+                      size: 100,
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 50,
                   ),
-                  Text(user?['username'] ?? 'No username'),
-                  Text(user?['email'] ?? 'No email'),
+                  Text(
+                    user?['username'] ?? 'No username',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    user?['email'] ?? 'No email',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  ),
                 ],
               ),
             );
