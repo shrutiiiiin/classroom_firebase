@@ -7,7 +7,7 @@ class MyPostButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondary,
