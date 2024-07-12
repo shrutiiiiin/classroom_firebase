@@ -40,6 +40,7 @@ class UserPage extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                   itemCount: users.length,
+                  padding: EdgeInsets.all(12),
                   itemBuilder: (context, index) {
                     final user = users[index];
                     return ListTile(

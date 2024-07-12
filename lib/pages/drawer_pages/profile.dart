@@ -53,11 +53,11 @@ class ProfilePage extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.secondary,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(24),
                     ),
                     child: Icon(
                       Icons.person,
-                      size: 100,
+                      size: 200,
                     ),
                   ),
                   SizedBox(
@@ -71,6 +71,16 @@ class ProfilePage extends StatelessWidget {
                   Text(
                     user?['email'] ?? 'No email',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    user?['usertype'] ?? 'No usertype',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    user?['class'] ?? 'No class',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
                   ),
                 ],
               ),
