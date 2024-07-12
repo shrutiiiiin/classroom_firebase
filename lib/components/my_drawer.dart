@@ -46,10 +46,15 @@ class MyDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               DrawerHeader(
-                child: Text(
-                  "Drawer Header",
-                  style:
-                      TextStyle(color: Theme.of(context).colorScheme.primary),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 24),
+                  child: Text(
+                    "Drawer Header",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  ),
                 ),
               ),
               // home title
@@ -60,7 +65,11 @@ class MyDrawer extends StatelessWidget {
                     Icons.home,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  title: Text("Home"),
+                  title: Text(
+                    "Home",
+                    style:
+                        TextStyle(color: Theme.of(context).colorScheme.primary),
+                  ),
                   onTap: () => Navigator.pop(context),
                 ),
               ),
@@ -72,7 +81,11 @@ class MyDrawer extends StatelessWidget {
                       Icons.person,
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                    title: Text("Profile"),
+                    title: Text(
+                      "Profile",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(context, '/profile');
@@ -86,7 +99,11 @@ class MyDrawer extends StatelessWidget {
                       Icons.people,
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                    title: Text("User"),
+                    title: Text(
+                      "User",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(context, '/user');
@@ -102,7 +119,11 @@ class MyDrawer extends StatelessWidget {
                   Icons.logout,
                   color: Theme.of(context).colorScheme.primary,
                 ),
-                title: Text("Logout"),
+                title: Text(
+                  "Logout",
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
+                ),
                 onTap: () {
                   Navigator.pop(context);
                   logout(context);
