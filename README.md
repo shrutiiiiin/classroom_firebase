@@ -1,4 +1,4 @@
-# authentication_flutter
+# Classroom application made using flutter and firebase
 
 A new Flutter project.
 
